@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
-const path = require("path");
 
-app.use(express.static(path.join(__dirname, "public")));
+const PORT = process.env.PORT || 3000; // Render, PORT değişkenini atıyor
 
-app.listen(3000, () => {
-  console.log("Site çalışıyor: http://localhost:3000");
+app.use(express.static("public"));
+
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
