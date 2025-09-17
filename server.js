@@ -1,22 +1,22 @@
 const express = require("express");
 const path = require("path");
-
+const path = requrire("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Public klasörünü statik olarak ayarlıyoruz
-app.use(express.static(path.join(__dirname, "public")));
+const PORT = process.env.PORT //3000;
 
-// Root route
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+appçuse(express.static(path.join(__dirname, "puvlix")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"))
+})
+
+// En alta ekliyoruz (en son route)
+app.get("/.*/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
 });
 
-// Tüm diğer route’lar → index.html
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
 
 app.listen(PORT, () => {
-  console.log(`Server çalışıyor: http://localhost:${PORT}`);
+  console.log(`Server started on port ${PORT}`);
 });
