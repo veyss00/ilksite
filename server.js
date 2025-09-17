@@ -12,9 +12,10 @@ app.get("*", (req, res) => {
 })
 
 // En alta ekliyoruz (en son route)
-app.get("/.*/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
+
 
 
 app.listen(PORT, () => {
